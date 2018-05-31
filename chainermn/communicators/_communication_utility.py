@@ -88,7 +88,7 @@ def inter_allreduce_gpu(
     # Reduce own region data (inplace bufferA) and averaging
     ret = gpu_buffer_a.array(inter_size * n_elems_per_node) \
         .reshape(inter_size, n_elems_per_node) \
-        .sum(axis=0) * (1.0 / size)
+        .sum(axis=0)
 
     # Gather others' region data (bufferA -> bufferB)
     for i in range(0, inter_size):
